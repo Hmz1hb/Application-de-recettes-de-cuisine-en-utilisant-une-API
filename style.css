@@ -1,9 +1,40 @@
-
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+	padding: 0px;
+	margin: 0px;
+
 }
 
+#header{
+	background-image: url(./pexels-william-choquette-2641886.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.carousel-inner h1{
+    font-size: 60px;
+    font-family: var(--lg-font);
+}
+.carousel-item .btn{
+    border-color: #fff!important;
+	background-color: #fff;
+}
+.carousel-item .btn:hover{
+    border-color: var(--pink)!important;
+}
 
+/* title */
+.title h2::before{
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 50px;
+    background-color: var(--pink);
+    left: -20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+h1,h2{
+	color: #ffffff;
+}
