@@ -4,12 +4,13 @@
 
 }
 
-#header{
+#header, nav{
 	background-image: url(./pexels-william-choquette-2641886.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+
 .carousel-inner h1{
     font-size: 60px;
     font-family: var(--lg-font);
@@ -37,4 +38,27 @@
 }
 h1,h2{
 	color: #ffffff;
+}
+
+/* News letter */
+#newsletter{
+    background-color: rgba(179, 179, 179, 0.05);
+}
+#newsletter p{
+    max-width: 600px;
+}
+#newsletter .input-group{
+    max-width: 500px;
+}
+#newsletter .form-control{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#newsletter .btn{
+    color: #fff;
+    background-color: #11100F ;
+}
+#newsletter .btn:hover{
+    background-color: #C15116;
+    border-color: #C15116;
 }
