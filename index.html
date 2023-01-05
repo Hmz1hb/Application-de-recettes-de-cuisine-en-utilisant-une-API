@@ -42,7 +42,7 @@
                   <div class="col-md-10 col-sm-8">
                     <div class="form">
                       <i class="fa fa-search"></i>
-                      <input type="text" class="form-control form-input" placeholder="Search anything...">
+                      <input id="search-bar" type="text" class="form-control form-input" placeholder="A meal ?">
                     </div>                
                   </div> 
                 </div>           
@@ -58,18 +58,34 @@
                     <div class = "collection-list mt-4 row gx-0 gy-3">
                         <div class = "col-md-6 col-lg-4 col-xl-2 p-2 best">
                             <div class = "collection-img position-relative">
-                                    <img id="CardImg" src = "./1200x630bb.png" class = "w-100">
+                                    <img id="CardImg" src = "" class = "w-100">
                             </div>
                             <div class = "text-center">
                                 <p class = "text-capitalize my-">Food Name</p>
                                 <div class = "d-flex flex-wrap justify-content-center filter-button-group">
-                                    <button type = "button" class = "btn m-1 text-light bg-dark" data-filter = ".best">Cook Now</button>
+                                    <button id="Cook-Now" type = "button" class = "btn m-1 text-light bg-dark" data-filter = ".best">Cook Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title"></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>              
         </section>
         <section id = "newsletter" class = "py-5">
             <div class = "container">
