@@ -39,7 +39,8 @@ async function searchMeals(query) {
   try {
     const response = await fetch(`${API_URL2}${query}`);
     const data = await response.json();
-    const meals = data.meals;
+    const meals = data.meals || [];
+
 
     const cardElements = document.querySelectorAll('.collection-list .best');
     for (let i = 0; i < cardElements.length; i++) {
@@ -69,3 +70,64 @@ searchInput.addEventListener('keyup', event => {
 
 //Meals Details
 
+const API_URL3 = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
+async function getMealDetails(idMeal) {
+  try {
+    const response = await fetch(`${API_URL3}${idMeal}`);
+    const data = await response.json();
+    const meals = data.meals;
+    const meal = meals ? meals[0] : null;
+
+    if (!meal) {
+      alert(idMeal);
+      return { instructions: '', ingredients: [] };
+    }
+
+    const instructions = meal.strInstructions;
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+      const ingredient = meal[`strIngredient${i}`];
+      const measure = meal[`strMeasure${i}`];
+      if (!ingredient || !measure) {
+        continue;
+      }
+      ingredients.push(`${ingredient}: ${measure}`);
+    }
+
+    return { instructions, ingredients };
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
+
+
+async function showMealDetails(idMeal) {
+  const { instructions, ingredients } = await getMealDetails(idMeal);
+
+  const modalBody = document.querySelector('.modal-body');
+  modalBody.innerHTML = `
+    <h5>Instructions:</h5>
+    <p>${instructions.replace(/\n/g, '<br>')}</p>
+    <h5>Ingredients:</h5>
+    <ul>
+      ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+    </ul>
+  `;
+
+  const modal = document.querySelector('.modal');
+  $(modal).modal('show');
+}
+
+const buttons = document.querySelectorAll('.filter-button-group button');
+for (const button of buttons) {
+  button.addEventListener('click', async event => {
+    event.preventDefault();
+    const idMeal = event.target.dataset.idMeal;
+    showMealDetails(idMeal);
+  });
+}

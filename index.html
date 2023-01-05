@@ -63,29 +63,29 @@
                             <div class = "text-center">
                                 <p class = "text-capitalize my-">Food Name</p>
                                 <div class = "d-flex flex-wrap justify-content-center filter-button-group">
-                                    <button id="Cook-Now" type = "button" class = "btn m-1 text-light bg-dark" data-filter = ".best">Cook Now</button>
+                                    <button id="Cook-Now" type = "button" class = "btn m-1 text-light bg-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Cook Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title"></h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body"></div>
+                    <div class="modal-body">
+                    </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal"></button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
-                  </div>
                 </div>
-              </div>              
+                </div>
+            </div>           
         </section>
         <section id = "newsletter" class = "py-5">
             <div class = "container">
