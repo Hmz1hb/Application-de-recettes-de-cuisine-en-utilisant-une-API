@@ -18,8 +18,8 @@
     <navbar id="navbar"></navbar>
     <main>
         <div id="background"></div>
-        <header id = "header" class = "vh-100 carousel slide" data-bs-ride = "carousel" style = "padding-top: 104px;">
-            <div class = "container h-100 d-flex align-items-center carousel-inner">
+        <header id = "header" class = "carousel slide" data-bs-ride = "carousel" style = "padding-top: 16.5vh; height: 75vh;">
+            <div class = "container h-50 d-flex align-items-center carousel-inner">
                 <div class = "text-center carousel-item active">
                     <h2 class = "text-capitalize">Vegetarian Recipes</h2>
                     <h1 class = "text-uppercase py-2 fw-bold">Vegetarian Casserole</h1>
@@ -31,32 +31,41 @@
                     <a href = "#" class = "btn mt-3 text-uppercase">Cook Now</a>
                 </div>
             </div>
-            <button class = "carousel-control-prev" type = "button" data-bs-target="#header" data-bs-slide = "prev">
+            <button class = "carousel-control-prev" type = "button" data-bs-target="#header" data-bs-slide = "prev" style="margin-bottom: 13vh;">
                 <span class = "carousel-control-prev-icon"></span>
             </button>
-            <button class = "carousel-control-next" type = "button" data-bs-target="#header" data-bs-slide = "next">
+            <button class = "carousel-control-next" type = "button" data-bs-target="#header" data-bs-slide = "next" style="margin-bottom: 13vh;">
                 <span class = "carousel-control-next-icon"></span>
             </button>
+            <div class="container" style="margin-top: 18vh;">
+                <div class="row height d-flex justify-content-center align-items-center">
+                  <div class="col-md-10 col-sm-8">
+                    <div class="form">
+                      <i class="fa fa-search"></i>
+                      <input type="text" class="form-control form-input" placeholder="Search anything...">
+                    </div>                
+                  </div> 
+                </div>           
+              </div>
         </header>
+
         <section id = "collection" class = "py-5">
             <div class = "container">
                 <div class = "title text-center">
-                    <h2 class = "position-relative d-inline-block text-dark">New Collection</h2>
+                    <h2 class = "position-relative d-inline-block text-dark">Our Fresh Collection</h2>
                 </div>
-    
                 <div class = "row g-0">
                     <div class = "collection-list mt-4 row gx-0 gy-3">
                         <div class = "col-md-6 col-lg-4 col-xl-2 p-2 best">
                             <div class = "collection-img position-relative">
-                                <img id="CardImg" src = "./1200x630bb.png" class = "w-100">
+                                    <img id="CardImg" src = "./1200x630bb.png" class = "w-100">
                             </div>
                             <div class = "text-center">
                                 <p class = "text-capitalize my-">Food Name</p>
                                 <div class = "d-flex flex-wrap justify-content-center filter-button-group">
-                                    <button type = "button" class = "btn m-1 text-dark" data-filter = ".best">Cook Now</button>
+                                    <button type = "button" class = "btn m-1 text-light bg-dark" data-filter = ".best">Cook Now</button>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

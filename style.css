@@ -9,6 +9,7 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+    border: none;
 }
 
 .carousel-inner h1{
@@ -61,4 +62,45 @@ h1,h2{
 #newsletter .btn:hover{
     background-color: #C15116;
     border-color: #C15116;
+}
+/*seach bar*/
+.height{
+
+    height: 10vh;
+}
+
+.form{
+
+    position: relative;
+}
+
+.form .fa-search{
+
+    position: absolute;
+    top:20px;
+    left: 20px;
+    color: #9ca3af;
+
+}
+
+.form span{
+
+        position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+.form-input{
+
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus{
+
+    box-shadow: none;
+    border:none;
 }
