@@ -7,7 +7,7 @@ $(function(){
 
 
 async function fillCard(cardElement) {
-    const API_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+  const API_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
   try {
     const response = await fetch(API_URL);
     const data = await response.json();
@@ -18,10 +18,15 @@ async function fillCard(cardElement) {
 
     const mealName = cardElement.querySelector('.my-');
     mealName.textContent = meal.strMeal;
+
+    // Set the value of data-meal-name in the "Cook Now" button
+    const cookNowButton = cardElement.querySelector('#Cook-Now');
+    cookNowButton.setAttribute('data-meal-name', meal.strMeal);
   } catch (error) {
     console.error(error);
   }
 }
+
 
 const template = document.querySelector('.collection-list .best');
 for (let i = 0; i < 6; i++) {
@@ -57,10 +62,15 @@ async function searchMeals(query) {
 
       const mealName = cardElements[i].querySelector('.my-');
       mealName.textContent = meal.strMeal;
+      // Set the value of data-meal-name in the "Cook Now" button
+
+      const cookNowButton = cardElements[i].querySelector('#Cook-Now');
+      cookNowButton.setAttribute('data-meal-name', meal.strMeal);
     }
   } catch (error) {
     console.error(error);
   }
+
 }
 
 const searchInput = document.getElementById('search-bar');
@@ -70,17 +80,17 @@ searchInput.addEventListener('keyup', event => {
 
 //Meals Details
 
-const API_URL3 = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+const API_URL3 = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
-async function getMealDetails(idMeal) {
+async function getMealDetails(mealName) {
   try {
-    const response = await fetch(`${API_URL3}${idMeal}`);
+    const response = await fetch(`${API_URL3}${mealName}`);
     const data = await response.json();
     const meals = data.meals;
     const meal = meals ? meals[0] : null;
 
     if (!meal) {
-      alert(idMeal);
+      alert(mealName);
       return { instructions: '', ingredients: [] };
     }
 
@@ -101,23 +111,33 @@ async function getMealDetails(idMeal) {
   }
 }
 
-
-
-
-
-
-async function showMealDetails(idMeal) {
-  const { instructions, ingredients } = await getMealDetails(idMeal);
+async function showMealDetails(mealName) {
+  const { instructions, ingredients } = await getMealDetails(mealName);
 
   const modalBody = document.querySelector('.modal-body');
-  modalBody.innerHTML = `
-    <h5>Instructions:</h5>
-    <p>${instructions.replace(/\n/g, '<br>')}</p>
-    <h5>Ingredients:</h5>
-    <ul>
-      ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-    </ul>
-  `;
+  modalBody.innerHTML = '';  // Clear the contents of the modal body
+
+  // Create and append the instructions element
+  const instructionsHeading = document.createElement('h5');
+  instructionsHeading.textContent = 'Instructions:';
+  modalBody.appendChild(instructionsHeading);
+
+  const instructionsParagraph = document.createElement('p');
+  instructionsParagraph.innerHTML = instructions.replace(/\n/g, '<br>');
+  modalBody.appendChild(instructionsParagraph);
+
+  // Create and append the ingredients element
+  const ingredientsHeading = document.createElement('h5');
+  ingredientsHeading.textContent = 'Ingredients:';
+  modalBody.appendChild(ingredientsHeading);
+
+  const ingredientsList = document.createElement('ul');
+  ingredients.forEach(ingredient => {
+    const listItem = document.createElement('li');
+    listItem.textContent = ingredient;
+    ingredientsList.appendChild(listItem);
+  });
+  modalBody.appendChild(ingredientsList);
 
   const modal = document.querySelector('.modal');
   $(modal).modal('show');
@@ -127,7 +147,8 @@ const buttons = document.querySelectorAll('.filter-button-group button');
 for (const button of buttons) {
   button.addEventListener('click', async event => {
     event.preventDefault();
-    const idMeal = event.target.dataset.idMeal;
-    showMealDetails(idMeal);
+    const mealName = event.target.dataset.mealName;
+    showMealDetails(mealName);
   });
 }
+

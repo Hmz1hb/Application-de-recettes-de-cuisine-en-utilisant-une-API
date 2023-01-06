@@ -20,9 +20,6 @@
     border-color: #fff!important;
 	background-color: #fff;
 }
-.carousel-item .btn:hover{
-    border-color: var(--pink)!important;
-}
 
 /* title */
 .title h2::before{
@@ -39,6 +36,16 @@
 }
 h1,h2{
 	color: #ffffff;
+}
+
+/* Cards button */
+#Cook-Now{
+    color: #fff;
+    background-color: #11100F ;
+}
+#Cook-Now:hover{
+    background-color: #C15116;
+    border-color: #C15116;
 }
 
 /* News letter */
