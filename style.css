@@ -92,9 +92,9 @@ h1,h2{
 
 .form span{
 
-        position: absolute;
+    position: absolute;
     right: 17px;
-    top: 13px;
+    top: 7px;
     padding: 2px;
     border-left: 1px solid #d1d5db;
 
@@ -111,3 +111,38 @@ h1,h2{
     box-shadow: none;
     border:none;
 }
+.bootpag {
+  display: flex;
+  justify-content: center;
+}
+
+.bootpag li {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.bootpag li.dots {
+  display: none;
+}
+
+.bootpag li.active a {
+    color: red;
+  }
+  
+
+@media (max-width: 768px) {
+  .bootpag li {
+    display: block;
+    margin: 0.5rem;
+  }
+}
+.btn-primary {
+    background-color: blue;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: gray;
+    color: white;
+  }
+  
