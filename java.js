@@ -90,10 +90,9 @@ async function getMealDetails(mealName) {
     const meal = meals ? meals[0] : null;
 
     if (!meal) {
-      alert(mealName);
       return { instructions: '', ingredients: [] };
     }
-
+  
     const instructions = meal.strInstructions;
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {

@@ -82,7 +82,7 @@ container.removeChild(templateCard);
       <div class="text-center">
         <p class="text-capitalize my-">${meal.strMeal}</p>
         <div class="d-flex flex-wrap justify-content-center filter-button-group">
-          <button type="button" class="btn m-1 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-meal-name="${meal.strMeal}">Cook Now</button>
+          <button type="button" id="Cook-Now" class="btn m-1 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-meal-name="${meal.strMeal}">Cook Now</button>
         </div>
       </div>
     `;
@@ -133,7 +133,16 @@ document.querySelector('#filter').addEventListener('click', () => {
   const region = document.querySelector('#regions').value;
 
   // Show only the meals that match the selected category and region
-  $filteredMeals = $('.best').filter(`[data-category="${category}"][data-region="${region}"]`);
+  if (category === "" && region === "") {
+    $filteredMeals = $('.best');
+  } else if (category === "" && region !== "") {
+    $filteredMeals = $('.best').filter(`[data-region="${region}"]`);
+  } else if (region === "" && category !=="") {
+    $filteredMeals = $('.best').filter(`[data-category="${category}"]`);
+  } else {
+    $filteredMeals = $('.best').filter(`[data-category="${category}"][data-region="${region}"]`);
+  }
+
   $('.best').hide();
   $filteredMeals.show();
 
@@ -146,11 +155,12 @@ document.querySelector('#filter').addEventListener('click', () => {
       // Show only the cards on the selected page that match the selected category and region
       $filteredMeals.hide();
       $filteredMeals.slice((num - 1) * 6, num * 6).show();
-    });
+    }).find('a').addClass('btn btn-outline-dark btn-sm');
   } else {
     $('.pagination').empty();
   }
 });
+
 
 
 //Meals Details
@@ -165,10 +175,9 @@ async function getMealDetails(mealName) {
     const meal = meals ? meals[0] : null;
 
     if (!meal) {
-      alert(mealName);
+
       return { instructions: '', ingredients: [] };
     }
-
     const instructions = meal.strInstructions;
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
@@ -181,7 +190,7 @@ async function getMealDetails(mealName) {
     }
 
     return { instructions, ingredients };
-  } catch (error) {
+  } catch (error) { 
     console.error(error);
   }
 }
@@ -218,12 +227,12 @@ async function showMealDetails(mealName) {
   $(modal).modal('show');
 }
 
-const buttons = document.querySelectorAll('.filter-button-group button');
-for (const button of buttons) {
-  button.addEventListener('click', async event => {
-    event.preventDefault();
-    const mealName = event.target.dataset.mealName;
+
+window.addEventListener('load', () => {
+  const modal = document.querySelector('.modal');
+  modal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const mealName = button.getAttribute('data-meal-name');
     showMealDetails(mealName);
   });
-}
-
+});
