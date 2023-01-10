@@ -1,7 +1,7 @@
 //Load Header & Footer
 $(function(){
-    $("#navbar").load("navbar.html"); 
-    $("#footer").load("footer.html"); 
+    $("#navbar").load("./navbar.html"); 
+    $("#footer").load("./footer.html"); 
 });
 //
 async function getCategories() {
