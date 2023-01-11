@@ -20,7 +20,9 @@
     border-color: #fff!important;
 	background-color: #fff;
 }
-
+.fade {
+    transition: opacity 0.5s
+}  
 /* title */
 .title h2::before{
     position: absolute;

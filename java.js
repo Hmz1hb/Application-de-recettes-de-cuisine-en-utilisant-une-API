@@ -3,9 +3,46 @@ $(function(){
     $("#navbar").load("./navbar.html"); 
     $("#footer").load("./footer.html"); 
 });
+
+//sliding meals suggestion on home page ramdomized
+function getRandomMeal() {
+  fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+    .then((response) => response.json())
+    .then((data) => {
+      var meal = data.meals[0];
+      document.querySelector("#header .carousel-item.active h2").textContent = meal.strCategory;
+      document.querySelector("#header .carousel-item.active h1").textContent = meal.strMeal;
+      document.querySelector("#header .carousel-item.active a").setAttribute("data-meal-name", meal.strMeal);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  getRandomMeal();
+});
+
+var prevButton = document.querySelector("#header .carousel-control-prev");
+prevButton.addEventListener("click", function(){
+  document.querySelector("#header .carousel-item.active").classList.add("fade");
+  setTimeout(getRandomMeal, 400);
+  setTimeout(function() {
+    document.querySelector("#header .carousel-item.active").classList.remove("fade");
+  }, 700);
+});
+
+var nextButton = document.querySelector("#header .carousel-control-next");
+nextButton.addEventListener("click", function(){
+  document.querySelector("#header .carousel-item.active").classList.add("fade");
+ setTimeout(getRandomMeal, 400);
+
+
+  setTimeout(function() {
+    document.querySelector("#header .carousel-item.active").classList.remove("fade");
+  }, 700);
+});
+
+
+
 //Api load in the 6 cards
-
-
 async function fillCard(cardElement) {
   const API_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
   try {
@@ -111,10 +148,14 @@ async function getMealDetails(mealName) {
 }
 
 async function showMealDetails(mealName) {
-  const { instructions, ingredients } = await getMealDetails(mealName);
+  const { instructions, ingredients} = await getMealDetails(mealName);
 
   const modalBody = document.querySelector('.modal-body');
   modalBody.innerHTML = '';  // Clear the contents of the modal body
+  // Create and append the meal name element
+  console.log(mealName);
+  const mealNameElement = document.getElementById('exampleModalLabel');
+  mealNameElement.textContent = mealName;
 
   // Create and append the instructions element
   const instructionsHeading = document.createElement('h5');
@@ -142,12 +183,12 @@ async function showMealDetails(mealName) {
   $(modal).modal('show');
 }
 
-const buttons = document.querySelectorAll('.filter-button-group button');
-for (const button of buttons) {
-  button.addEventListener('click', async event => {
-    event.preventDefault();
-    const mealName = event.target.dataset.mealName;
+window.addEventListener('load', () => {
+  const modal = document.querySelector('.modal');
+  modal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const mealName = button.getAttribute('data-meal-name');
     showMealDetails(mealName);
   });
-}
+});
 

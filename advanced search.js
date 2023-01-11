@@ -189,18 +189,22 @@ async function getMealDetails(mealName) {
       ingredients.push(`${ingredient}: ${measure}`);
     }
 
-    return { instructions, ingredients };
+    return { instructions, ingredients};
   } catch (error) { 
     console.error(error);
   }
 }
 
 async function showMealDetails(mealName) {
-  const { instructions, ingredients } = await getMealDetails(mealName);
+  const { instructions, ingredients} = await getMealDetails(mealName);
 
   const modalBody = document.querySelector('.modal-body');
   modalBody.innerHTML = '';  // Clear the contents of the modal body
-
+  // Create and append the meal name element
+  console.log(mealName);
+  const mealNameElement = document.getElementById('exampleModalLabel');
+  mealNameElement.textContent = mealName;
+  
   // Create and append the instructions element
   const instructionsHeading = document.createElement('h5');
   instructionsHeading.textContent = 'Instructions:';
