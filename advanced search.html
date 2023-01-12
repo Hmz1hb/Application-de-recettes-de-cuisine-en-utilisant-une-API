@@ -18,66 +18,74 @@
 <body>
     <navbar id="navbar"></navbar>
     <main>
-        </div>
-        <section id = "collection" class = "py-5">
-            <div class = "container">
-                <div class = "title text-center">
-                    <h2 class = "position-relative d-inline-block text-dark">Our Fresh Collection</h2>
+        <div>
+            <section id = "collection" class = "py-5">
+                <div class = "container">
+                    <div class = "title text-center">
+                        <h2 class = "position-relative d-inline-block text-dark">Filter Recipes by Ingredients and Regiois</h2>
+                    </div>
+                <!-- Dropdown for categories -->
+                <div class="dropdown">
+                    <div class="form-group">
+                        <div class="container col-7">
+                            <label for="categories">Categories</label>
+                            <select class="form-control" id="categories">
+                                <option value="">Categories</option>
+                            </select>
+                        </div>
+                          <!-- Add a filter button -->
+                        <div class="container">
+                            <button id="filter" type="button" class="btn btn-primary">Filter</button>
+                        </div>
+                        <!-- Dropdown for regions -->
+                        <div class="container col-7">
+                        <label for="regions">Regions</label>
+                        <select class="form-control" id="regions">
+                            <option value="">Regions</option>
+                        </select>
+                        </div>
+                    </div>
                 </div>
-            <!-- Dropdown for categories -->
-                <div class="form-group">
-                    <label for="categories">Categories</label>
-                    <select class="form-control" id="categories">
-                        <option value="">Categories</option>
-                    </select>
-                </div>
-            <!-- Dropdown for regions -->
-                <div class="form-group">
-                    <label for="regions">Regions</label>
-                    <select class="form-control" id="regions">
-                        <option value="">Regions</option>
-                    </select>
-                </div>
-                <div>
-                  <!-- Add a filter button -->
-                    <button id="filter" type="button" class="btn btn-primary">Filter</button>
-                </div>
-            <!-- the cards  -->
-                <div class = "row g-0">
-                    <div class = "collection-list mt-4 row gx-0 gy-3">
-                        <div class = "col-md-6 col-lg-4 col-xl-2 p-2 best">
-                            <div class = "collection-img position-relative">
-                                    <img id="CardImg" src = "" class = "w-100">
-                            </div>
-                            <div class = "text-center">
-                                <p class = "text-capitalize my-">Food Name</p>
-                                <div class = "d-flex flex-wrap justify-content-center filter-button-group">
-                                    <button id="Cook-Now" type = "button" class = "btn m-1 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-meal-name="">Cook Now</button>
+             
+                <!-- the cards  -->
+                    <div class = "row g-0">
+                        <div class = "collection-list mt-4 row gx-0 gy-3">
+                            <div class = "col-md-6 col-lg-4 col-xl-2 p-2 best">
+                                <div class = "collection-img position-relative">
+                                        <img id="CardImg" src = "" class = "w-100">
+                                </div>
+                                <div class = "text-center">
+                                    <p class = "text-capitalize my-">Food Name</p>
+                                    <div class = "d-flex flex-wrap justify-content-center filter-button-group">
+                                        <button id="Cook-Now" type = "button" class = "btn m-1 text-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-meal-name="">Cook Now</button>
+                                    </div>
                                 </div>
                             </div>
+                                <div class="position-relative">
+                                    <div class="position-absolute top-0 start-50 translate-middle">
+                                        <div class="pagination"></div>
+                                    </div>
+                                </div>
                         </div>
-                                <div? class="pagination"></div>
-                    </div>
-                                <div? class="pagination"></div>
-                </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
-                </div>
-            </div>           
-        </section>  
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                         </div>
+                    </div>
+                </div>           
+            </section> 
+        </div> 
     </main>
      <footer id="footer"></footer>
 </body>

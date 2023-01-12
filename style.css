@@ -139,12 +139,24 @@ h1,h2{
   }
 }
 .btn-primary {
-    background-color: blue;
-    color: white;
+    background-color: #0C0D0E !important;
+    border-color: #0C0D0E !important;
+    border: none
+  }
+  .btn-primary:hover{
+    background-color: #C15116 !important;
+    border-color: #C15116 !important;
+    border: none;
   }
   
   .btn-secondary {
-    background-color: gray;
-    color: white;
+    background-color: #0C0D0E !important;
+    border-color: #0C0D0E !important;
+    border: none
   }
+    .btn-secondary:hover{
+        background-color: #C15116 !important;
+        border-color: #C15116!important;
+        border: none;
+    }
   
